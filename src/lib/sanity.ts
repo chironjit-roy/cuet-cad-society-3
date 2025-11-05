@@ -1,11 +1,12 @@
-import { createClient } from '@sanity/client'
+import { createClient } from "@sanity/client";
 
-export const sanityClient = createClient({
-  projectId: 'dmupx62x', // Replace with your Sanity project ID
-  dataset: 'production',
-  useCdn: true, // Use CDN for faster response times
-  apiVersion: '2024-01-01', // Use current date for API version
-})
+export const sanity = createClient({
+  projectId: import.meta.env.VITE_SANITY_PROJECT_ID,
+  dataset: import.meta.env.VITE_SANITY_DATASET,
+  apiVersion: import.meta.env.VITE_SANITY_API_VERSION || "2025-01-01",
+  useCdn: true,
+});
+
 
 // Helper function to get image URL from Sanity
 export function getSanityImageUrl(source: any) {
